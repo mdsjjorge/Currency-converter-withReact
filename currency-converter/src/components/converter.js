@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './converter.css'
 
 export default class Converter extends Component {
 
@@ -18,20 +19,37 @@ export default class Converter extends Component {
     }
 
     converter() {
-        console.log(this.state);
+        let amount = document.querySelector('#amount').value;
+        let from = this.props.Acurrency;
+        let to = this.props.Bcurrency;
+        const HOST = 'api.frankfurter.app';
+
+        let Res = 
+            fetch(`
+                https://${HOST}/latest?amount=${amount}&from=${from}&to=${to}
+                `)
+                .then(resp => resp.json())
+                .then((data) => {
+                    return data;
+            });
+        Res.then((item) => {
+            let Bcurrency_value = item.rates[to].toFixed(2).replace(".",",");
+            this.setState({Bcurrency_value});
+        });
     }
 
     render() {
         return (
-            <>
+            <div className='converter'>
                 <h2> 
                     {this.props.Acurrency} to {this.props.Bcurrency} 
                 </h2>
                 <input 
                     type={'text'} 
+                    id={'amount'}
                     onChange={(event)=>{
                         this.setState({Acurrency_value:
-                            event.target.value})
+                            event.target.value});
                     }}
                 >                    
                 </input>
@@ -41,8 +59,8 @@ export default class Converter extends Component {
                     onClick={this.converter}                   
                 > 
                 </input>
-                <p>Result</p>
-            </>
+                <p>Result {`R$ ${this.state.Bcurrency_value}`}</p>
+            </div>
         )
     // todo componente deve retornar apenas uma div
     }    
