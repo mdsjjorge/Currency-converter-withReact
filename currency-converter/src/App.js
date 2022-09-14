@@ -1,31 +1,15 @@
-// import logo from './logo.svg';
 import './App.css';
 import Converter from './components/converter';
-// import './components/converter.css'
+import {Header, Footer} from './components/standard';
 
 function App() {
   return (
     <div className="App">
-      <Converter Acurrency="USD" Bcurrency="BRL"></Converter>
+      <Header/>
+      <Converter Acurrency="BRL" Bcurrency="USD"/>
+      <Footer/>
     </div>
   );
 }
 
 export default App;
-
-// ====================================================
-//  component skeleton 
-// ====================================================
-
-// import React, {Component} from 'react';
-// import {Text, View} from 'react-native';
-
-// export default class componentName extends Component {
-//   render() {
-//     return (
-//       <View>
-//         <Text> </Text>
-//       </View>
-//     )
-//   }
-// }

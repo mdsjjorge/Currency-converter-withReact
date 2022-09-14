@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import './converter.css'
+import  { 
+            Container, 
+            // Nav, 
+            // SubContainer 
+        } 
+        from './style'
 
 export default class Converter extends Component {
 
@@ -40,26 +45,31 @@ export default class Converter extends Component {
 
     render() {
         return (
-            <div className='converter'>
-                <h2> 
-                    {this.props.Acurrency} to {this.props.Bcurrency} 
-                </h2>
-                <input 
-                    type={'text'} 
-                    id={'amount'}
-                    onChange={(event)=>{
-                        this.setState({Acurrency_value:
-                            event.target.value});
-                    }}
-                >                    
-                </input>
-                <input 
-                    type={'button'} 
-                    value={'converter'}
-                    onClick={this.converter}                   
-                > 
-                </input>
-                <p>Result {`R$ ${this.state.Bcurrency_value}`}</p>
+            <div>
+                <Container color="blue">
+                    <h2> 
+                        {this.props.Acurrency} to {this.props.Bcurrency} 
+                    </h2>
+                    <input 
+                        type={'text'} 
+                        id={'amount'}
+                        onChange={(event)=>{
+                            this.setState({Acurrency_value:
+                                event.target.value});
+                        }}
+                    >                    
+                    </input>
+                    <input 
+                        type={'button'} 
+                        value={'converter'}
+                        onClick={this.converter}                   
+                    > 
+                    </input>
+                    <p>US Dollar {`U$ ${this.state.Bcurrency_value}`}</p>
+                </Container>
+                {/* <SubContainer>
+
+                </SubContainer> */}
             </div>
         )
     // todo componente deve retornar apenas uma div
